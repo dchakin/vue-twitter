@@ -7,7 +7,7 @@ export const site = {
 }
 
 export const app = {
-    title: "MyTemplate"
+    title: "VTwitter"
 }
 
 
