@@ -1,19 +1,17 @@
 <template>
-  <teleport to="body">
-    <transition name="modal">
-      <div @click="handleCloseModal" class="modal__wrapper">
-        <div class="modal-content" @click.stop="">
-          <div class="modal-header">
-            <span class="modal-title">{{ title }}</span>
-            <span @click="handleCloseModal" class="button-close">&times;</span>
-          </div>
-          <div class="modal-body">
-            <slot></slot>
-          </div>
+  <transition name="modal">
+    <div @click="handleCloseModal" class="modal__wrapper">
+      <div @click.stop="" class="modal-content">
+        <div class="modal-header">
+          <span class="modal-title">{{ title }}</span>
+          <span @click="handleCloseModal" class="button-close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <slot></slot>
         </div>
       </div>
-    </transition>
-  </teleport>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -24,12 +22,13 @@ export default {
       default: 'Modal'
     }
   },
-  setup(props, {emit}) {
+  emits: ['onClose'],
+  setup (_, {emit}) {
     const handleCloseModal = () => {
       emit('onClose')
     }
 
-    return {handleCloseModal}
+    return { handleCloseModal }
   }
 }
 </script>
@@ -39,11 +38,9 @@ export default {
 .modal-enter {
   opacity: 0;
 }
-
 .modal-leave-active {
   opacity: 0;
 }
-
 .modal-enter .modal-content,
 .modal-leave-active .modal-content {
   transform: scale(1.2);
@@ -83,11 +80,9 @@ export default {
   align-self: center;
   justify-content: space-between;
   padding-bottom: 20px;
-
   span {
     font-size: 24px;
   }
-
   .button-close {
     cursor: pointer;
   }

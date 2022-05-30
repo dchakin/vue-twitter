@@ -1,8 +1,8 @@
 <template>
   <div class="spinner-wrapper">
     <div
-      :style="{ width: `${width}px`, height: `${height}px` }"
-      class="spinner"
+        :style="{ width: `${width}px`, height: `${height}px` }"
+        class="spinner"
     />
   </div>
 </template>
